@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 顶部工具栏 -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-robot"></i>
+                    Gemini Chatbot
+                </h1>
+                <div class="status-indicator">
+                    <div class="status-dot" id="statusDot"></div>
+                    <span class="status-text" id="statusText">连接中...</span>
+                </div>
+                <div class="toolbar">
+                    <button class="btn btn-icon" id="searchBtn" title="网络搜索">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="btn btn-icon" id="clearBtn" title="清空历史">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <button class="btn btn-icon" id="reconnectBtn" title="重新连接">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- 聊天区域 -->
+        <main class="chat-container">
+            <div class="messages" id="messages">
+                <!-- 消息将在这里动态添加 -->
+            </div>
+            
+            <!-- 加载指示器 -->
+            <div class="loading-indicator" id="loadingIndicator" style="display: none;">
+                <div class="loading-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span>正在思考...</span>
+            </div>
+        </main>
+
+        <!-- 输入区域 -->
+        <footer class="input-area">
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="errorText"></span>
+                <button class="close-error" id="closeError">&times;</button>
+            </div>
+            
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="输入消息..." 
+                        autocomplete="off"
+                        disabled
+                    >
+                    <button class="send-btn" id="sendBtn" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 搜索模态框 -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>网络搜索</h3>
+                <button class="close-modal" id="closeSearchModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="输入搜索关键词..."
+                    autocomplete="off"
+                >
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelSearch">取消</button>
+                <button class="btn btn-primary" id="performSearch">搜索</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
